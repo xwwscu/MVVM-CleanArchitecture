@@ -13,10 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fernandocejas.android10.sample.data.entity.mapper;
+package com.fernandocejas.android10.sample.domain.interactor.mapper;
 
-import com.fernandocejas.android10.sample.data.dto.User;
+import com.fernandocejas.android10.sample.data.entity.LogInEntity;
 import com.fernandocejas.android10.sample.data.entity.UserEntity;
+import com.fernandocejas.android10.sample.domain.interactor.entity.LogIn;
+import com.fernandocejas.android10.sample.domain.interactor.entity.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -68,5 +70,9 @@ public class UserEntityDataMapper {
 		}
 
 		return userList;
+	}
+
+	public LogIn transform(LogInEntity entity) {
+		return new LogIn();
 	}
 }

@@ -17,7 +17,6 @@ package com.fernandocejas.android10.sample.presentation;
 
 import android.app.Activity;
 import android.app.Application;
-import android.support.annotation.NonNull;
 
 /**
  * Android Main Application

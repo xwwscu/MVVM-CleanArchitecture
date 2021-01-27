@@ -15,6 +15,7 @@
  */
 package com.fernandocejas.android10.sample.data.entity.mapper;
 
+import com.fernandocejas.android10.sample.data.entity.LogInEntity;
 import com.fernandocejas.android10.sample.data.entity.UserEntity;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -67,6 +68,16 @@ public class UserEntityJsonMapper {
       userEntityCollection = this.gson.fromJson(userListJsonResponse, listOfUserEntityType);
 
       return userEntityCollection;
+    } catch (JsonSyntaxException jsonException) {
+      throw jsonException;
+    }
+  }
+
+  public LogInEntity transformLogInEntity(String string) {
+    try {
+      Type logInEntityType = new TypeToken<LogInEntity>() {}.getType();
+      LogInEntity logInEntity = this.gson.fromJson(string, logInEntityType);
+      return logInEntity;
     } catch (JsonSyntaxException jsonException) {
       throw jsonException;
     }

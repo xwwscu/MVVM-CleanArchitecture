@@ -15,7 +15,7 @@
  */
 package com.fernandocejas.android10.sample.presentation.mapper;
 
-import com.fernandocejas.android10.sample.data.dto.User;
+import com.fernandocejas.android10.sample.domain.interactor.entity.User;
 import com.fernandocejas.android10.sample.presentation.model.UserModel;
 
 import java.util.ArrayList;

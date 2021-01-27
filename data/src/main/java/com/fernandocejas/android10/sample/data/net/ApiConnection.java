@@ -15,7 +15,6 @@
  */
 package com.fernandocejas.android10.sample.data.net;
 
-import android.support.annotation.Nullable;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import java.io.IOException;
@@ -51,7 +50,6 @@ public class ApiConnection implements Callable<String> {
    *
    * @return A string response
    */
-  @Nullable
   public String requestSyncCall() {
     connectToApi();
     return response;

@@ -16,7 +16,8 @@
 package com.fernandocejas.android10.sample.domain.interactor.repository;
 
 
-import com.fernandocejas.android10.sample.data.dto.User;
+import com.fernandocejas.android10.sample.domain.interactor.entity.LogIn;
+import com.fernandocejas.android10.sample.domain.interactor.entity.User;
 
 import java.util.List;
 
@@ -37,4 +38,6 @@ public interface UserRepository {
 	 * @param userId The user id used to retrieve user data.
 	 */
 	Observable<User> user(final int userId);
+
+	Observable<LogIn> logIn();
 }

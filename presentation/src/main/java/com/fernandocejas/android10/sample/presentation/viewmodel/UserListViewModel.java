@@ -2,12 +2,9 @@ package com.fernandocejas.android10.sample.presentation.viewmodel;
 
 
 import android.content.Intent;
-import android.databinding.ObservableBoolean;
-import android.databinding.ObservableField;
-import android.util.Log;
 import android.view.View;
 
-import com.fernandocejas.android10.sample.data.dto.User;
+import com.fernandocejas.android10.sample.domain.interactor.entity.User;
 import com.fernandocejas.android10.sample.domain.interactor.DefaultSubscriber;
 import com.fernandocejas.android10.sample.domain.interactor.GetUserList;
 import com.fernandocejas.android10.sample.domain.interactor.UseCase;
@@ -27,9 +24,6 @@ import java.util.List;
 public class UserListViewModel extends LoadingViewModel {
 	private final static String TAG = UserListViewModel.class.getSimpleName();
 
-	public final ObservableBoolean showContentList = new ObservableBoolean(false);
-	public final ObservableField<UsersAdapter> usersListAdapter = new ObservableField<>();
-
 	UseCase getUserList = new GetUserList(AndroidApplication.getContext());
 	UserModelDataMapper userModelDataMapper = new UserModelDataMapper();
 
@@ -38,22 +32,19 @@ public class UserListViewModel extends LoadingViewModel {
 	@Override
 	public void showLoading() {
 		super.showLoading();
-		showContentList.set(false);
+
 	}
 
 	@BindView
 	@Override
 	public void showRetry() {
 		super.showRetry();
-		showContentList.set(false);
+
 	}
 
 	@BindView
 	public void showContentList(UsersAdapter usersAdapter) {
-		showLoading.set(false);
-		showRetry.set(false);
-		showContentList.set(true);
-		usersListAdapter.set(usersAdapter);
+
 	}
 
 	@BindView
@@ -63,9 +54,6 @@ public class UserListViewModel extends LoadingViewModel {
 
 	@Command
 	public void loadUsersCommand() {
-		if (showLoading.get()) {
-			return;
-		}
 		showLoading();
 		getUserList.execute(new DefaultSubscriber<List<User>>() {
 			@Override

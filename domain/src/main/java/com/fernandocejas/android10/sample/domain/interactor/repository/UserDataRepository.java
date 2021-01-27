@@ -17,9 +17,11 @@ package com.fernandocejas.android10.sample.domain.interactor.repository;
 
 import android.content.Context;
 
-import com.fernandocejas.android10.sample.data.dto.User;
+import com.fernandocejas.android10.sample.domain.interactor.entity.LogIn;
+import com.fernandocejas.android10.sample.domain.interactor.entity.User;
+import com.fernandocejas.android10.sample.data.entity.LogInEntity;
 import com.fernandocejas.android10.sample.data.entity.UserEntity;
-import com.fernandocejas.android10.sample.data.entity.mapper.UserEntityDataMapper;
+import com.fernandocejas.android10.sample.domain.interactor.mapper.UserEntityDataMapper;
 import com.fernandocejas.android10.sample.data.datasource.UserDataStore;
 import com.fernandocejas.android10.sample.data.datasource.UserDataStoreFactory;
 
@@ -86,5 +88,16 @@ public class UserDataRepository implements UserRepository {
 						return userEntityDataMapper.transform(userEntity);
 					}
 				});
+	}
+
+	@Override
+	public Observable<LogIn> logIn() {
+		UserDataStore userDataStore = this.userDataStoreFactory.createCloudDataStore();
+		return userDataStore.userLogIn().map(new Func1<LogInEntity, LogIn>() {
+			@Override
+			public LogIn call(LogInEntity logInEntity) {
+				return userEntityDataMapper.transform(logInEntity);
+			}
+		});
 	}
 }

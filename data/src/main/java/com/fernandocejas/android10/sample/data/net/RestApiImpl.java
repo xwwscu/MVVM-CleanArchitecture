@@ -18,6 +18,8 @@ package com.fernandocejas.android10.sample.data.net;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
+import com.fernandocejas.android10.sample.data.entity.LogInEntity;
 import com.fernandocejas.android10.sample.data.entity.UserEntity;
 import com.fernandocejas.android10.sample.data.entity.mapper.UserEntityJsonMapper;
 import com.fernandocejas.android10.sample.data.exception.NetworkConnectionException;
@@ -93,6 +95,26 @@ public class RestApiImpl implements RestApi {
         }
       }
     });
+  }
+
+  @Override
+  public Observable<LogInEntity> userLogIn() {
+    return Observable.create(new Observable.OnSubscribe<LogInEntity>() {
+      @Override
+      public void call(Subscriber<? super LogInEntity> subscriber) {
+        try {
+          String resp = logIn();
+          subscriber.onNext(userEntityJsonMapper.transformLogInEntity(resp));
+          subscriber.onCompleted();
+        } catch (Exception e) {
+          subscriber.onError(new NetworkConnectionException(e.getCause()));
+        }
+      }
+    });
+  }
+
+  private String logIn() throws MalformedURLException {
+    return ApiConnection.createGET(RestApi.API_URL_LOGIN_DETAILS).requestSyncCall();
   }
 
   private String getUserEntitiesFromApi() throws MalformedURLException {

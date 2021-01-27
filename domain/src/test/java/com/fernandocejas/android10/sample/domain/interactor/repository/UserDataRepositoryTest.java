@@ -15,9 +15,9 @@
  */
 package com.fernandocejas.android10.sample.domain.interactor.repository;
 
-import com.fernandocejas.android10.sample.data.dto.User;
+import com.fernandocejas.android10.sample.domain.interactor.entity.User;
 import com.fernandocejas.android10.sample.data.entity.UserEntity;
-import com.fernandocejas.android10.sample.data.entity.mapper.UserEntityDataMapper;
+import com.fernandocejas.android10.sample.domain.interactor.mapper.UserEntityDataMapper;
 import com.fernandocejas.android10.sample.data.datasource.UserDataStore;
 import com.fernandocejas.android10.sample.data.datasource.UserDataStoreFactory;
 

@@ -16,6 +16,7 @@
 package com.fernandocejas.android10.sample.data.datasource;
 
 import com.fernandocejas.android10.sample.data.cache.UserCache;
+import com.fernandocejas.android10.sample.data.entity.LogInEntity;
 import com.fernandocejas.android10.sample.data.entity.UserEntity;
 import com.fernandocejas.android10.sample.data.net.RestApi;
 
@@ -61,5 +62,10 @@ public class CloudUserDataStore implements UserDataStore {
 	public Observable<UserEntity> userEntityDetails(final int userId) {
 		return this.restApi.userEntityById(userId)
 				.doOnNext(saveToCacheAction);
+	}
+
+	@Override
+	public Observable<LogInEntity> userLogIn() {
+		return this.restApi.userLogIn();
 	}
 }

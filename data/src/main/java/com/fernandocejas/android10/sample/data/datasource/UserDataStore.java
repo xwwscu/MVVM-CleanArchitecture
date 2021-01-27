@@ -15,6 +15,7 @@
  */
 package com.fernandocejas.android10.sample.data.datasource;
 
+import com.fernandocejas.android10.sample.data.entity.LogInEntity;
 import com.fernandocejas.android10.sample.data.entity.UserEntity;
 import java.util.List;
 import rx.Observable;
@@ -34,4 +35,6 @@ public interface UserDataStore {
    * @param userId The id to retrieve user data.
    */
   Observable<UserEntity> userEntityDetails(final int userId);
+
+  Observable<LogInEntity> userLogIn();
 }
